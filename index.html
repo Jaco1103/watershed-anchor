@@ -254,6 +254,10 @@
   .lc-gate{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 12px;font-size:12.5px;font-weight:600;color:var(--accent-deep);text-align:center;line-height:1.4}
   .lc-gate.plain{color:var(--muted);font-weight:500}
   .lc-gate .ar{font-size:15px;color:var(--faint)}
+  /* mermaid (slide 10) */
+  .mermaid-wrap{margin:14px auto 0;max-width:980px;text-align:center}
+  .mermaid{font-family:var(--sans)}
+  .mermaid svg{max-width:100%;max-height:58vh;height:auto}
 </style>
 </head>
 <body>
@@ -523,124 +527,36 @@
     </div>
   </section>
 
-  <!-- 10 VIAH ARKITEKTUR-DIAGRAM -->
-  <section class="slide scroll" data-part="2">
+  <!-- 10 VIAH PIPELINE (mermaid) -->
+  <section class="slide scroll" data-part="2" data-mermaid="1">
     <div class="inner">
       <div class="eyebrow"><span class="pip"></span> Viah · sådan hænger det sammen</div>
-      <h2>Hele flowet, fra <span class="accent">kilde til søgning</span>.</h2>
-      <div class="diagram">
-        <svg viewBox="0 0 1000 500" role="img" aria-label="Viah blueprint">
-          <defs>
-            <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0 L0 0 0 26" fill="none" stroke="#2F6FED" stroke-width="0.5" opacity="0.09"/></pattern>
-            <marker id="mg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9aa3b0"/></marker>
-            <marker id="ma" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E08A2B"/></marker>
-            <marker id="mb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2F6FED"/></marker>
-          </defs>
-          <rect x="0" y="0" width="1000" height="500" fill="url(#grid)"/>
-
-          <text x="104" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#6B7480">KILDER</text>
-          <text x="893" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#6B7480">APP</text>
-
-          <rect x="300" y="18" width="486" height="466" rx="16" fill="#F4F9FE" stroke="#2F6FED" stroke-width="1.4" stroke-dasharray="5 4"/>
-          <text x="318" y="44" font-family="Inter,sans-serif" font-size="12.5" font-weight="700" fill="#1E4FBF">DATABASE · Supabase / Postgres + PostGIS</text>
-
-          <!-- sources -->
-          <g font-family="Inter,sans-serif">
-            <rect x="20" y="64" width="168" height="52" rx="11" fill="#fff" stroke="#CBD5E6"/>
-            <text x="104" y="87" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">Google Places</text>
-            <text x="104" y="104" text-anchor="middle" font-size="10.5" fill="#6B7480">navn · geo · rating</text>
-            <rect x="20" y="222" width="168" height="52" rx="11" fill="#fff" stroke="#CBD5E6"/>
-            <text x="104" y="245" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">Claude (Sonnet)</text>
-            <text x="104" y="262" text-anchor="middle" font-size="10.5" fill="#6B7480">foreslår tags</text>
-            <rect x="20" y="380" width="168" height="52" rx="11" fill="#fff" stroke="#CBD5E6"/>
-            <text x="104" y="403" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">OpenStreetMap</text>
-            <text x="104" y="420" text-anchor="middle" font-size="10.5" fill="#6B7480">polygoner</text>
-          </g>
-
-          <!-- db tables -->
-          <g font-family="Inter,sans-serif">
-            <rect x="330" y="60" width="190" height="46" rx="9" fill="#fff" stroke="#CBD5E6"/>
-            <text x="425" y="80" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">places_staging</text>
-            <text x="425" y="95" text-anchor="middle" font-size="10" fill="#6B7480">rå data · venter</text>
-
-            <rect x="330" y="126" width="420" height="66" rx="11" fill="#E5EDFD" stroke="#2F6FED" stroke-width="1.5"/>
-            <text x="540" y="150" text-anchor="middle" font-size="15" font-weight="700" fill="#13171E">places</text>
-            <text x="540" y="168" text-anchor="middle" font-size="10.5" fill="#1E4FBF" font-weight="600">category: café · restaurant · bar · museum ...</text>
-            <text x="540" y="183" text-anchor="middle" font-size="10" fill="#6B7480">status: pending → active</text>
-
-            <rect x="330" y="224" width="128" height="48" rx="9" fill="#fff" stroke="#CBD5E6"/>
-            <text x="394" y="246" text-anchor="middle" font-size="12" font-weight="600" fill="#13171E">tags</text>
-            <text x="394" y="261" text-anchor="middle" font-size="10" fill="#6B7480">ordbog · 32</text>
-
-            <rect x="478" y="212" width="208" height="72" rx="10" fill="#EEF4FE" stroke="#2F6FED" stroke-width="1.4"/>
-            <text x="582" y="234" text-anchor="middle" font-size="12.5" font-weight="700" fill="#1E4FBF">category_tag_options</text>
-            <text x="582" y="251" text-anchor="middle" font-size="10" fill="#3C4452">hvilke tags må sidde på</text>
-            <text x="582" y="264" text-anchor="middle" font-size="10" fill="#3C4452">hvilken kategori</text>
-            <text x="582" y="278" text-anchor="middle" font-size="10" font-weight="600" fill="#1E4FBF">+ confidence ≥ 0,70</text>
-
-            <rect x="478" y="312" width="208" height="50" rx="9" fill="#fff" stroke="#CBD5E6"/>
-            <text x="582" y="334" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">place_tags</text>
-            <text x="582" y="349" text-anchor="middle" font-size="10" fill="#6B7480">godkendte stemninger pr. sted</text>
-
-            <rect x="330" y="312" width="128" height="50" rx="9" fill="#fff" stroke="#CBD5E6"/>
-            <text x="394" y="334" text-anchor="middle" font-size="12" font-weight="600" fill="#13171E">geo_features</text>
-            <text x="394" y="349" text-anchor="middle" font-size="10" fill="#6B7480">PostGIS · GiST</text>
-          </g>
-
-          <!-- query / app -->
-          <g font-family="Inter,sans-serif">
-            <rect x="810" y="126" width="166" height="66" rx="11" fill="#1E4FBF"/>
-            <text x="893" y="154" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">search_places()</text>
-            <text x="893" y="172" text-anchor="middle" font-size="10.5" fill="#CFE0FF">deterministisk SQL</text>
-            <rect x="824" y="250" width="138" height="50" rx="11" fill="#fff" stroke="#CBD5E6"/>
-            <text x="893" y="272" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">iOS-app</text>
-            <text x="893" y="287" text-anchor="middle" font-size="10" fill="#6B7480">rangeret rejseplan</text>
-          </g>
-
-          <!-- grey flow arrows -->
-          <g fill="none" stroke="#9aa3b0" stroke-width="1.6">
-            <path d="M188,88 C250,88 270,82 330,82" marker-end="url(#mg)"/>
-            <path d="M425,106 L425,124" marker-end="url(#mg)"/>
-            <path d="M188,250 C300,250 350,292 476,278" marker-end="url(#mg)"/>
-            <path d="M458,244 L476,244" marker-end="url(#mg)"/>
-            <path d="M540,192 C560,202 582,202 582,210" marker-end="url(#mg)"/>
-            <path d="M582,284 L582,310" marker-end="url(#mg)"/>
-            <path d="M188,406 C262,406 300,350 330,344" marker-end="url(#mg)"/>
-            <path d="M458,337 L476,337" marker-end="url(#mg)"/>
-          </g>
-          <!-- promote back to places -->
-          <path d="M686,330 C724,322 750,250 750,194" fill="none" stroke="#2F6FED" stroke-width="1.6" stroke-dasharray="4 3" marker-end="url(#mb)"/>
-          <!-- query arrows -->
-          <path d="M750,150 L806,150" fill="none" stroke="#E08A2B" stroke-width="2.4" marker-end="url(#ma)"/>
-          <path d="M893,192 L893,246" fill="none" stroke="#2F6FED" stroke-width="2" marker-end="url(#mb)"/>
-
-          <!-- labels -->
-          <g font-family="Inter,sans-serif" font-size="10" fill="#6B7480">
-            <text x="556" y="200">kategori</text>
-            <text x="468" y="306" text-anchor="end">derive_geo_tags</text>
-            <text x="757" y="262">forfrem → active</text>
-          </g>
-          <text x="778" y="142" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="#E08A2B">hver søgning</text>
-
-          <!-- numbered steps -->
-          <g font-family="Inter,sans-serif" font-weight="700" font-size="12">
-            <circle cx="256" cy="74" r="11" fill="#1E4FBF"/><text x="256" y="78" text-anchor="middle" fill="#fff">1</text>
-            <circle cx="443" cy="115" r="11" fill="#1E4FBF"/><text x="443" y="119" text-anchor="middle" fill="#fff">2</text>
-            <circle cx="306" cy="284" r="11" fill="#1E4FBF"/><text x="306" y="288" text-anchor="middle" fill="#fff">3</text>
-            <circle cx="600" cy="298" r="11" fill="#1E4FBF"/><text x="600" y="302" text-anchor="middle" fill="#fff">4</text>
-            <circle cx="742" cy="250" r="11" fill="#2F6FED"/><text x="742" y="254" text-anchor="middle" fill="#fff">5</text>
-            <circle cx="780" cy="170" r="11" fill="#E08A2B"/><text x="780" y="174" text-anchor="middle" fill="#fff">6</text>
-          </g>
-        </svg>
+      <h2>Fra Google Places til <span class="accent">søgbart sted</span>.</h2>
+      <div class="mermaid-wrap">
+        <pre class="mermaid">
+flowchart TD
+  A["Google Places API"] --&gt;|"grid + søgeord"| B{"Kvalitetsport"}
+  B --&gt;|"for få anmeldelser / blokeret type"| X["Skip"]
+  B --&gt;|"kæde"| X2["Auto-arkivér"]
+  B --&gt;|"godkendt"| C["places_staging · rå data"]
+  C --&gt;|"process_staging · map_raw_category"| D["places · pending · kategori sat"]
+  D --&gt;|"enrich.ts"| E["Claude Sonnet · foreslår tags"]
+  E --&gt; F{"validate_and_insert_place_tags"}
+  F --&gt;|"slug ikke tilladt for kategori"| Y["Afvist"]
+  F --&gt;|"confidence under 0,70"| Y
+  F --&gt;|"godkendt"| G["place_tags · stemninger"]
+  G --&gt; H{"mindst 1 gyldigt tag?"}
+  H --&gt;|"nej"| P["forbliver pending"]
+  H --&gt;|"ja"| I["places · active"]
+  I --&gt; J["Geo: OSM + PostGIS · geo_derived tags"]
+  J --&gt; K["Klar til search_places()"]
+  classDef hot fill:#1E4FBF,stroke:#1E4FBF,color:#ffffff;
+  classDef skip fill:#F3F4F6,stroke:#D9DEE6,color:#8B95A8;
+  class I,K hot
+  class X,X2,Y,P skip
+        </pre>
       </div>
-      <div class="dlegend">
-        <span><b style="color:#1E4FBF">1</b>&nbsp; Indlæs rå data</span>
-        <span><b style="color:#1E4FBF">2</b>&nbsp; Validér + sæt <b>kategori</b></span>
-        <span><b style="color:#1E4FBF">3</b>&nbsp; Sonnet foreslår tags</span>
-        <span><b style="color:#1E4FBF">4</b>&nbsp; Filtrér: tilladt for kategorien + confidence</span>
-        <span><b style="color:#2F6FED">5</b>&nbsp; Forfrem til <b>active</b></span>
-        <span><b style="color:#E08A2B">6</b>&nbsp; Søg → app</span>
-      </div>
+      <p class="wf-foot">Porten <b>validate_and_insert_place_tags</b> tjekker hvert tag mod <b>category_tag_options</b> (er det tilladt for stedets kategori?) og confidence ≥ 0,70. Søgning bagefter er ren, deterministisk SQL.</p>
     </div>
   </section>
 
@@ -700,7 +616,9 @@
     </div>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
+  if(window.mermaid){mermaid.initialize({startOnLoad:false,theme:'base',themeVariables:{fontFamily:'Inter, sans-serif',primaryColor:'#EEF4FE',primaryBorderColor:'#2F6FED',primaryTextColor:'#13171E',lineColor:'#9aa3b0',secondaryColor:'#F4F9FE',tertiaryColor:'#ffffff'},flowchart:{useMaxWidth:true,htmlLabels:true,curve:'basis'}});}
   const slides=[...document.querySelectorAll('.slide')];
   const N=slides.length, dots=document.getElementById('dots');
   slides.forEach((_,i)=>{const b=document.createElement('button');b.onclick=()=>go(i);dots.appendChild(b);});
@@ -725,6 +643,7 @@
     document.getElementById('next').disabled=cur===N-1;
     document.body.classList.toggle('part2', s.dataset.part==='2');
     if(s.dataset.flow)startFlow();else stopFlow();
+    if(s.dataset.mermaid && window.mermaid && !s._mr){s._mr=true;try{mermaid.run({nodes:[s.querySelector('.mermaid')]});}catch(e){}}
   }
   document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')go(cur+1);
