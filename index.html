@@ -243,6 +243,17 @@
   .dlegend span{display:inline-flex;align-items:center;gap:7px}
   .dlegend i{width:18px;height:0;border-top:2px dashed #9aa3b0}
   .dlegend i.live{border-top:2px solid #E08A2B}
+  /* place lifecycle (slide 10) */
+  .lifecycle{max-width:720px;margin:22px auto 0}
+  .lc-node{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:15px 18px;box-shadow:var(--sh-card)}
+  .lc-node.active{border-color:var(--accent);background:var(--accent-tint)}
+  .lc-node .lcn{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--accent-tint);color:var(--accent-deep);font-weight:700;font-size:14px;display:grid;place-items:center}
+  .lc-node.active .lcn{background:var(--accent-deep);color:#fff}
+  .lc-node .nm{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--ink)}
+  .lc-node .ds{font-size:13px;color:var(--muted);margin-top:3px;font-weight:300}
+  .lc-gate{display:flex;align-items:center;justify-content:center;gap:8px;padding:9px 12px;font-size:12.5px;font-weight:600;color:var(--accent-deep);text-align:center;line-height:1.4}
+  .lc-gate.plain{color:var(--muted);font-weight:500}
+  .lc-gate .ar{font-size:15px;color:var(--faint)}
 </style>
 </head>
 <body>
@@ -516,100 +527,17 @@
   <section class="slide scroll" data-part="2">
     <div class="inner">
       <div class="eyebrow"><span class="pip"></span> Viah · sådan hænger det sammen</div>
-      <h2>Fra kilde til <span class="accent">rejseplan</span>.</h2>
-      <div class="diagram">
-        <svg viewBox="0 0 1000 450" role="img" aria-label="Viah dataflow">
-          <defs>
-            <marker id="mg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9aa3b0"/></marker>
-            <marker id="ma" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E08A2B"/></marker>
-            <marker id="mb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2F6FED"/></marker>
-          </defs>
-          <!-- zone labels -->
-          <text x="103" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#6B7480">KILDER</text>
-          <text x="870" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#6B7480">APP</text>
-
-          <!-- DB panel -->
-          <rect x="300" y="20" width="404" height="412" rx="16" fill="#F1F7FE" stroke="#2F6FED" stroke-width="1.4"/>
-          <text x="316" y="44" font-family="Inter,sans-serif" font-size="12.5" font-weight="600" fill="#1E4FBF">Supabase · Postgres + PostGIS</text>
-
-          <!-- sources -->
-          <g font-family="Inter,sans-serif">
-            <rect x="24" y="58" width="158" height="54" rx="11" fill="#fff" stroke="#E4E8EE"/>
-            <text x="103" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">Google Places</text>
-            <text x="103" y="99" text-anchor="middle" font-size="10.5" fill="#6B7480">navn · geo · rating</text>
-            <rect x="24" y="200" width="158" height="54" rx="11" fill="#fff" stroke="#E4E8EE"/>
-            <text x="103" y="224" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">OpenStreetMap</text>
-            <text x="103" y="241" text-anchor="middle" font-size="10.5" fill="#6B7480">polygoner</text>
-            <rect x="24" y="343" width="158" height="54" rx="11" fill="#fff" stroke="#E4E8EE"/>
-            <text x="103" y="367" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">Claude</text>
-            <text x="103" y="384" text-anchor="middle" font-size="10.5" fill="#6B7480">tagger stemning</text>
-          </g>
-
-          <!-- db tables -->
-          <g font-family="Inter,sans-serif">
-            <rect x="326" y="70" width="176" height="46" rx="9" fill="#fff" stroke="#E4E8EE"/>
-            <text x="414" y="90" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">places_staging</text>
-            <text x="414" y="105" text-anchor="middle" font-size="10" fill="#6B7480">rå jsonb</text>
-
-            <rect x="326" y="150" width="352" height="62" rx="11" fill="#E5EDFD" stroke="#2F6FED"/>
-            <text x="502" y="178" text-anchor="middle" font-size="15" font-weight="700" fill="#13171E">places</text>
-            <text x="502" y="196" text-anchor="middle" font-size="10.5" fill="#3C4452">kerne · 890 rækker</text>
-
-            <rect x="326" y="256" width="164" height="54" rx="9" fill="#fff" stroke="#E4E8EE"/>
-            <text x="408" y="279" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">place_tags</text>
-            <text x="408" y="294" text-anchor="middle" font-size="10" fill="#6B7480">confidence · source</text>
-
-            <rect x="520" y="256" width="158" height="54" rx="9" fill="#fff" stroke="#E4E8EE"/>
-            <text x="599" y="279" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">tags</text>
-            <text x="599" y="294" text-anchor="middle" font-size="10" fill="#6B7480">32 · 8 kategorier</text>
-
-            <rect x="326" y="350" width="164" height="54" rx="9" fill="#fff" stroke="#E4E8EE"/>
-            <text x="408" y="373" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">geo_features</text>
-            <text x="408" y="388" text-anchor="middle" font-size="10" fill="#6B7480">PostGIS · GiST</text>
-          </g>
-
-          <!-- query / app -->
-          <g font-family="Inter,sans-serif">
-            <rect x="764" y="150" width="212" height="62" rx="11" fill="#1E4FBF"/>
-            <text x="870" y="178" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">search_places()</text>
-            <text x="870" y="196" text-anchor="middle" font-size="10.5" fill="#CFE0FF">deterministisk SQL</text>
-            <rect x="800" y="268" width="140" height="50" rx="11" fill="#fff" stroke="#E4E8EE"/>
-            <text x="870" y="290" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">iOS-app</text>
-            <text x="870" y="305" text-anchor="middle" font-size="10" fill="#6B7480">rangeret rejseplan</text>
-          </g>
-
-          <!-- arrows -->
-          <g fill="none" stroke="#9aa3b0" stroke-width="1.6">
-            <path d="M182,85 C250,85 270,92 322,92" marker-end="url(#mg)"/>
-            <path d="M414,116 L414,146" marker-end="url(#mg)"/>
-            <path d="M182,370 C250,370 262,283 322,283" marker-end="url(#mg)"/>
-            <path d="M182,227 C250,227 252,377 322,377" marker-end="url(#mg)"/>
-            <path d="M408,350 L408,314" marker-end="url(#mg)"/>
-          </g>
-          <!-- relationships (no head) -->
-          <g fill="none" stroke="#B7C0CC" stroke-width="1.3" stroke-dasharray="3 4">
-            <path d="M408,256 L468,212"/>
-            <path d="M599,256 L540,212"/>
-          </g>
-          <!-- query arrows -->
-          <path d="M678,181 L760,181" fill="none" stroke="#E08A2B" stroke-width="2.2" marker-end="url(#ma)"/>
-          <path d="M870,212 L870,264" fill="none" stroke="#2F6FED" stroke-width="2" marker-end="url(#mb)"/>
-
-          <!-- small labels -->
-          <g font-family="Inter,sans-serif" font-size="10" fill="#6B7480">
-            <text x="252" y="80">indlæs</text>
-            <text x="420" y="138">promovér</text>
-            <text x="236" y="330">tag + confidence</text>
-            <text x="414" y="336">derive_geo_tags</text>
-            <text x="520" y="238" text-anchor="middle">M:N</text>
-          </g>
-          <text x="700" y="170" font-family="Inter,sans-serif" font-size="10.5" font-weight="600" fill="#E08A2B">hver søgning</text>
-        </svg>
+      <h2>Et steds vej gennem <span class="accent">basen</span>.</h2>
+      <div class="lifecycle">
+        <div class="lc-node"><span class="lcn">1</span><div><div class="nm">Google Places → places_staging</div><div class="ds">Ingest-script (TypeScript/Node) gemmer rå sted-data som jsonb.</div></div></div>
+        <div class="lc-gate"><span class="ar">↓</span> Port 1 · validér navn, by, kategori, geo &nbsp;+&nbsp; map_raw_category</div>
+        <div class="lc-node"><span class="lcn">2</span><div><div class="nm">places · <span style="color:var(--muted);font-weight:500">pending</span></div><div class="ds">Her får stedet sin kategori: café, restaurant, bar, museum ...</div></div></div>
+        <div class="lc-gate"><span class="ar">↓</span> Port 2 · Sonnet foreslår stemnings-tags → place_tags (confidence ≥ 0,70)</div>
+        <div class="lc-node active"><span class="lcn">3</span><div><div class="nm">places · <span style="color:var(--accent-deep)">active</span></div><div class="ds">Beriget med tags og synligt for søgning.</div></div></div>
+        <div class="lc-gate plain"><span class="ar">↓</span> hver søgning · ren SQL</div>
+        <div class="lc-node"><span class="lcn">4</span><div><div class="nm">search_places() → app</div><div class="ds">Rangeret, gå-venlig rejseplan.</div></div></div>
       </div>
-      <div class="dlegend">
-        <span><i></i> Berigelse - lejlighedsvis / én gang pr. sted (AI og geo)</span>
-        <span><i class="live"></i> Forespørgsel - hver søgning, ren SQL</span>
-      </div>
+      <p class="wf-foot"><b style="color:var(--accent-deep)">tags</b> = ordbogen (32 mulige stemninger) · <b>category_tag_options</b> bestemmer hvilke tags må sidde på hvilken kategori · <b>Geo:</b> OSM → geo_features → geo-afledte tags.</p>
     </div>
   </section>
 
@@ -661,21 +589,8 @@
     </div>
   </section>
 
-  <!-- 13 AFSLUTNING -->
-  <section class="slide">
-    <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Hvad jeg går derfra med</div>
-      <h2>To skarpere <span class="accent">systemer</span>.</h2>
-      <div class="close-grid">
-        <div class="take"><div class="t">Til Watershed</div><p>De 3-4 spørgsmål en dataarkitekt ville tvinge frem før enhver databeslutning - foldet direkte ind i archetype-operatoren.</p></div>
-        <div class="take"><div class="t">Til Viah</div><p>En ærlig vurdering af hvor backenden bliver presset ved skalering, og de første træk der køber mest luft.</p></div>
-      </div>
-      <p class="note" style="margin-top:26px">Tak, Christian. Lad os komme i gang.</p>
-    </div>
-  </section>
-
   <div class="nav">
-    <span class="count" id="count">01 / 13</span>
+    <span class="count" id="count">01 / 12</span>
     <div class="navbtns">
       <button class="ico" id="prev" onclick="go(cur-1)">←</button>
       <button class="ico" id="next" onclick="go(cur+1)">→</button>
