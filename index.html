@@ -151,6 +151,21 @@
 
   @media(max-width:640px){.slide{padding:66px 20px 84px}}
 
+  /* watershed vertical operator flow */
+  .wflow{position:relative;margin:24px auto 0;padding-left:30px;max-width:660px}
+  .wflow:before{content:"";position:absolute;left:8px;top:12px;bottom:14px;width:2px;background:var(--line)}
+  .wf{position:relative;padding:7px 0;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .wf .dot{position:absolute;left:-30px;top:10px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:2px solid var(--faint)}
+  .wf b{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.04em}
+  .wf>span{color:var(--muted);font-size:13.5px}
+  .wf.start b{color:var(--accent-deep)}.wf.start .dot{border-color:var(--accent-deep)}
+  .wf.hot{flex-direction:column;align-items:flex-start;gap:3px;background:var(--accent-tint);border-radius:12px;padding:12px 16px;margin:5px 0}
+  .wf.hot .dot{top:15px;border-color:var(--accent-deep);background:var(--accent-deep)}
+  .wf.hot b{color:var(--accent-deep);font-size:14px}
+  .wf.hot em{font-style:normal;color:var(--ink-soft);font-size:12.5px;font-family:var(--sans)}
+  .wf-foot{margin:16px auto 0;max-width:660px;font-size:12px;color:var(--muted);line-height:1.6}
+  .wf-foot b{font-weight:600}
+
   /* ===== Viah front-end phone (ported from viah-showcase) ===== */
   .phone-split{grid-template-columns:1fr 300px;gap:44px}
   @media(max-width:900px){.phone-split{grid-template-columns:1fr;justify-items:center}}
@@ -290,20 +305,18 @@
     <div class="inner">
       <div class="eyebrow"><span class="pip"></span> Hvordan det faktisk virker</div>
       <h2>Syv operatorer. Én <span class="accent">flod</span>.</h2>
-      <p class="lede"><code style="font-family:var(--mono);font-size:.9em">init-project.md</code> er den levende kilde til sandhed. Hver operator læser den, kører som en fokuseret samtale og skriver sine konklusioner tilbage. AI'en kender hele kortet fra dag ét.</p>
-      <div class="chain">
-        <span class="op"><span class="num">0</span>init-project</span><span class="arr">→</span>
-        <span class="op"><span class="num">1</span>strategy</span><span class="arr">→</span>
-        <span class="op hot"><span class="num">2</span>archetype</span><span class="arr">→</span>
-        <span class="op"><span class="num">3</span>constraints</span><span class="arr">→</span>
-        <span class="op"><span class="num">4</span>evaluation</span><span class="arr">→</span>
-        <span class="op"><span class="num">5</span>prototype</span><span class="arr">→</span>
-        <span class="op"><span class="num">6</span>observability</span><span class="arr">→</span>
-        <span class="op"><span class="num">7</span>orchestration</span><span class="arr">→</span>
-        <span class="op">iteration</span>
+      <p class="lede">Watershed er en beslutnings-ramme, der lærer AI at tænke et produkt igennem, fra idé til udførelse - mens den holder på hukommelsen og tvinger byggeren til at tænke kritisk.</p>
+      <div class="wflow">
+        <div class="wf start"><span class="dot"></span><b>IDÉ</b><span>Det rå udgangspunkt.</span></div>
+        <div class="wf"><span class="dot"></span><b>STRATEGY</b><span>Hvem er det til?</span></div>
+        <div class="wf hot"><span class="dot"></span><b>ARCHETYPE</b><span>Hvad bygger vi?</span><em>Systemtype · database · datamodel · search-strategi · infrastruktur</em></div>
+        <div class="wf"><span class="dot"></span><b>CONSTRAINTS</b><span>Hvad kan gå i stykker?</span></div>
+        <div class="wf"><span class="dot"></span><b>EVALUATION</b><span>Hvad betyder succes?</span></div>
+        <div class="wf"><span class="dot"></span><b>PROTOTYPE</b><span>Hvad er den mindste rigtige test?</span></div>
+        <div class="wf"><span class="dot"></span><b>OBSERVABILITY</b><span>Hvad skal være synligt?</span></div>
+        <div class="wf"><span class="dot"></span><b>ORCHESTRATION</b><span>Hvordan forbliver det simpelt?</span></div>
       </div>
-      <div class="chain-side"><span>Altid tilgængelig, uden for kæden:</span><span class="op">reflect</span></div>
-      <p class="note">Hver operator skriver også en slash-kommando på projektniveau, så næste trin dukker op naturligt i værktøjet. <b>archetype</b> er dér hvor systemet, stacken og datamodellen besluttes - det mest afgørende, og det jeg vil hærde sammen med dig.</p>
+      <p class="wf-foot"><b style="color:var(--accent-deep)">init-project.md</b> bærer hukommelsen mellem hvert trin · <b>reflect</b> er altid tilgængelig · <b>iteration</b> kører løbende bagefter.</p>
     </div>
   </section>
 
@@ -326,7 +339,7 @@
     <div class="inner">
       <div class="eyebrow"><span class="pip"></span> Zoom ind · sådan gør archetype i dag</div>
       <h2>Sådan træffer <span class="accent">archetype</span> data-beslutninger i dag.</h2>
-      <p class="lede">Efter strategy kører archetype som en samtale, der definerer hvilken slags system det er - og især data og persistens. Ét spørgsmål ad gangen, konklusionerne skrives tilbage til init-project.md. Lige nu spørger den ind til:</p>
+      <p class="lede">Archetype er trinnet hvor <b>systemtype, database, datamodel, search-strategi og infrastruktur</b> bliver valgt. Den kører som en samtale - ét spørgsmål ad gangen - og skriver konklusionerne tilbage til init-project.md. Lige nu spørger den ind til:</p>
       <div class="cards c2">
         <div class="card"><h3>Form før "hvilken database"</h3><p>Kerne-entiteter og hvordan de hænger sammen. Relationel, dokument, vektor, geospatial, tidsserie - og hvorfor netop denne til disse data.</p></div>
         <div class="card"><h3>OLTP vs OLAP vs begge</h3><p>Transaktionelt, analytisk, eller begge dele så tidligt - og hvis begge, navngiv det som et signal om at systemet måske skal have to datalagre senere.</p></div>
