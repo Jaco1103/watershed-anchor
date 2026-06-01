@@ -150,6 +150,84 @@
   .take p{font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
 
   @media(max-width:640px){.slide{padding:66px 20px 84px}}
+
+  /* ===== Viah front-end phone (ported from viah-showcase) ===== */
+  .phone-split{grid-template-columns:1fr 300px;gap:44px}
+  @media(max-width:900px){.phone-split{grid-template-columns:1fr;justify-items:center}}
+  .flow-steps{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .flow-steps li{display:flex;align-items:center;gap:12px;padding:8px 0;color:var(--muted);font-size:14.5px;font-weight:500;transition:.35s;opacity:.5}
+  .flow-steps li .fn{width:24px;height:24px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted);transition:.35s;flex:0 0 24px}
+  .flow-steps li.active{color:var(--ink);opacity:1}
+  .flow-steps li.active .fn{background:linear-gradient(135deg,#2563EB,#9F8AD8,#FF7E47);border-color:transparent;color:#fff}
+  .phone{width:300px;height:600px;border-radius:42px;background:#11203a;padding:11px;box-shadow:0 40px 80px -30px rgba(36,56,100,.5);position:relative}
+  .phone .screen-area{width:100%;height:100%;border-radius:32px;overflow:hidden;position:relative;background:linear-gradient(180deg,#C5DCFF,#E8E3F5 45%,#FFE5D3)}
+  .phone .notch{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#11203a;border-radius:0 0 16px 16px;z-index:9}
+  @media(max-height:740px){.phone{transform:scale(.84);transform-origin:top center}}
+  .screen{position:absolute;inset:0;padding:40px 18px 18px;opacity:0;transition:opacity .5s ease;display:flex;flex-direction:column}
+  .screen.on{opacity:1}
+  .scr-h{font-family:var(--disp);font-weight:600;font-size:19px;line-height:1.2;color:#1A2233;margin:6px 2px 14px}
+  .scr-eye{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#8B95A8;margin:0 2px 4px}
+  .field{display:flex;align-items:center;gap:9px;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 4px 24px rgba(36,56,100,.1);font-size:13.5px;color:#1A2233;font-weight:500}
+  .field .mp{color:#FF7E47}
+  .mini-map{flex:1;margin-top:12px;border-radius:16px;background:linear-gradient(160deg,#DCE9FF,#EAE3F6 60%,#FFE9DA);position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(36,56,100,.05)}
+  .mini-map .grid{position:absolute;inset:0;background-image:linear-gradient(rgba(91,141,239,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(91,141,239,.12) 1px,transparent 1px);background-size:34px 34px}
+  .anchor-pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%)}
+  .on .anchor-pin{animation:vdrop .7s cubic-bezier(.2,1.3,.4,1) .45s both}
+  @keyframes vdrop{0%{transform:translate(-50%,-180%);opacity:0}60%{opacity:1}100%{transform:translate(-50%,-100%);opacity:1}}
+  .pin-shape{width:26px;height:26px;border-radius:50% 50% 50% 0;background:#FF7E47;transform:rotate(45deg);box-shadow:0 6px 14px -4px rgba(255,126,71,.7);position:relative}
+  .pin-shape:after{content:"";position:absolute;inset:0;margin:auto;width:8px;height:8px;background:#fff;border-radius:50%}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+  .cat{background:#fff;border-radius:14px;padding:13px 12px;box-shadow:0 4px 24px rgba(36,56,100,.1);display:flex;flex-direction:column;gap:7px;position:relative;transition:.3s}
+  .cat .ci{width:30px;height:30px;border-radius:9px;background:#EEF2FB;display:grid;place-items:center;font-size:15px}
+  .cat .cn{font-size:13px;font-weight:600;color:#1A2233}
+  .on .cat.s1{animation:vpick .45s ease .7s both}.on .cat.s2{animation:vpick .45s ease 1.0s both}.on .cat.s3{animation:vpick .45s ease 1.3s both}
+  @keyframes vpick{to{background:linear-gradient(135deg,#2563EB,#9F8AD8,#FF7E47)}}
+  .on .cat.s1 .cn,.on .cat.s2 .cn,.on .cat.s3 .cn{transition:color .3s .9s;color:#fff}
+  .cat .chk{position:absolute;top:9px;right:9px;width:17px;height:17px;border-radius:50%;background:#fff;color:#FF7E47;display:grid;place-items:center;font-size:10px;font-weight:800;opacity:0;transform:scale(.5)}
+  .on .cat.s1 .chk{animation:vpop .3s ease 1.0s both}.on .cat.s2 .chk{animation:vpop .3s ease 1.3s both}.on .cat.s3 .chk{animation:vpop .3s ease 1.6s both}
+  @keyframes vpop{to{opacity:1;transform:scale(1)}}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+  .chip{font-size:12.5px;font-weight:600;padding:9px 14px;border-radius:100px;background:#fff;color:#4A5568;box-shadow:0 4px 24px rgba(36,56,100,.1);transition:.3s}
+  .on .chip.t1{animation:vpick .45s ease .8s both;color:#fff;transition:color .3s .9s}.on .chip.t2{animation:vpick .45s ease 1.15s both}
+  .scr-gen{justify-content:center;align-items:center;text-align:center}
+  .gen-track{width:170px;height:90px;position:relative;margin-bottom:18px}
+  .gen-track svg{width:100%;height:100%;overflow:visible}
+  .gen-track path{fill:none;stroke:#FF7E47;stroke-width:2.5;stroke-dasharray:2 9;stroke-linecap:round;opacity:.7}
+  .gen-pin{position:absolute;top:0;left:0;width:18px;height:18px;border-radius:50% 50% 50% 0;background:#FF7E47;transform:rotate(45deg);box-shadow:0 4px 10px -2px rgba(255,126,71,.7);offset-path:path("M8,70 C 50,10 120,90 162,24");offset-rotate:0deg}
+  .on .gen-pin{animation:vtravel 2.2s ease-in-out infinite}
+  @keyframes vtravel{0%{offset-distance:0%}100%{offset-distance:100%}}
+  .gen-lines{display:flex;flex-direction:column;gap:7px;align-items:flex-start}
+  .gen-lines div{font-size:13px;color:#4A5568;font-weight:500;display:flex;align-items:center;gap:8px;opacity:0}
+  .gen-lines div:before{content:"✓";color:#2563EB;font-weight:800;font-size:11px}
+  .on .gl1{animation:vfade .4s ease .3s both}.on .gl2{animation:vfade .4s ease .9s both}.on .gl3{animation:vfade .4s ease 1.5s both}
+  @keyframes vfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .map-area{height:53%;border-radius:18px;position:relative;overflow:hidden;box-shadow:0 4px 24px rgba(36,56,100,.1);background:linear-gradient(160deg,#E6EDFF,#EFE9F8 55%,#FFEFE2)}
+  .mapsvg{position:absolute;inset:0;width:100%;height:100%}
+  .mapsvg text{text-anchor:middle;font-size:12px;font-weight:800;fill:#fff;font-family:var(--sans)}
+  .mapsvg .rline{fill:none;stroke:#FF7E47;stroke-width:2.6;stroke-dasharray:3 7;stroke-linecap:round;opacity:.85;stroke-dashoffset:320}
+  .on .mapsvg .rline{animation:vdash 1.5s ease .5s forwards}
+  @keyframes vdash{to{stroke-dashoffset:0}}
+  .mp{transform:scale(0);transform-box:fill-box;transform-origin:center}
+  .on .mp.p1{animation:vdre .42s cubic-bezier(.2,1.5,.4,1) .6s both}.on .mp.p2{animation:vdre .42s cubic-bezier(.2,1.5,.4,1) 1.0s both}.on .mp.p3{animation:vdre .42s cubic-bezier(.2,1.5,.4,1) 1.4s both}
+  @keyframes vdre{to{transform:scale(1)}}
+  .stops{margin-top:10px;display:flex;flex-direction:column;gap:7px}
+  .stop{display:flex;align-items:center;gap:10px;background:#fff;border-radius:13px;padding:9px 11px;box-shadow:0 4px 24px rgba(36,56,100,.1);opacity:0}
+  .stop .sn{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:11px;font-weight:800;flex:0 0 24px}
+  .stop .sn.b{background:#5B8DEF}.stop .sn.o{background:#FF7E47}
+  .stop .si{flex:1;min-width:0}
+  .stop .si .t{font-size:13px;font-weight:600;color:#1A2233;line-height:1.2}
+  .stop .si .m{font-size:10.5px;color:#8B95A8;font-weight:500}
+  .stop .tag{font-size:9.5px;font-weight:700;color:#fff;background:linear-gradient(135deg,#2563EB,#9F8AD8,#FF7E47);padding:3px 8px;border-radius:100px}
+  .on .stop.r1{animation:vslide .45s ease 1.5s both}.on .stop.r2{animation:vslide .45s ease 1.8s both}.on .stop.r3{animation:vslide .45s ease 2.1s both}
+  @keyframes vslide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  /* db diagram */
+  .diagram{width:100%;margin-top:20px}
+  .diagram svg{width:100%;height:auto;display:block}
+  .dlegend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .dlegend span{display:inline-flex;align-items:center;gap:7px}
+  .dlegend i{width:18px;height:0;border-top:2px dashed #9aa3b0}
+  .dlegend i.live{border-top:2px solid #E08A2B}
 </style>
 </head>
 <body>
@@ -168,7 +246,7 @@
     <div class="inner">
       <div class="eyebrow"><span class="pip"></span> Arbejdssession · Christian Henrik Reich</div>
       <h1>To systemer på bordet.<br>Én time til at <span class="accent">stress-teste</span> dem.</h1>
-      <p class="lede">Først: <b>Watershed</b> - en tænke-ramme til at bygge med AI, og dér hvor jeg vil have dine dataarkitekt-øjne. Derefter: <b>Viah</b> - min live rejse-backend, og et rigtigt Supabase-design at sparre på.</p>
+      <p class="lede">Først: <b>Watershed</b> - en tænke-ramme til at bygge med AI, hvor din erfaring som dataarkitekt ville være guld værd at sparre med. Derefter: <b>Viah</b> - min live rejse-backend, hvis du har lyst til at kigge med på et rigtigt Supabase-design.</p>
       <div class="pill-row">
         <span class="pill k">Watershed · rammen</span>
         <span class="pill k">Viah · den live backend</span>
@@ -180,12 +258,12 @@
   <!-- 2 TIMEN -->
   <section class="slide">
     <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Hvad jeg vil have ud af timen</div>
-      <h2>Din dybde, rettet mod det<br>jeg er <span class="accent">svagest</span> på.</h2>
+      <div class="eyebrow"><span class="pip"></span> En times sparring</div>
+      <h2>To ting, jeg gerne vil<br><span class="accent">tænke højt</span> om med dig.</h2>
       <div class="cards c3">
-        <div class="card"><div class="n">01 · Fokus</div><h3>Skærp Watershed</h3><p>Watershed får AI'en til at tænke et projekt grundigt igennem før der bygges. Det svageste trin er arkitektur og data. Det er præcis dit felt.</p></div>
-        <div class="card"><div class="n">02 · Udbyttet</div><h3>Bedre archetype-spørgsmål</h3><p>Jeg har ikke brug for svar om mit projekt. Jeg har brug for de <b>spørgsmål</b>, en dataarkitekt ville tvinge ethvert projekt til at svare på, før der vælges database.</p></div>
-        <div class="card"><div class="n">03 · Sparring</div><h3>Tryk-test Viah</h3><p>Den konkrete anden halvdel: se præcis hvordan Viahs Supabase virker, og fortæl mig så hvor det knækker når det vokser.</p></div>
+        <div class="card"><div class="n">01 · Konteksten</div><h3>Hvad Watershed prøver på</h3><p>At få AI til at tænke et projekt igennem før der bygges. Det trin jeg selv synes er sværest at få skarpt, er arkitektur og data.</p></div>
+        <div class="card"><div class="n">02 · Sparringen</div><h3>Hvordan du tænker om data</h3><p>Jeg vil rigtig gerne høre din måde at tænke data-beslutninger på - ikke for at få facit, men for at gøre de spørgsmål Watershed stiller skarpere.</p></div>
+        <div class="card"><div class="n">03 · Hvis der er tid</div><h3>Et kig på Viah</h3><p>Og har du lyst og tid bagefter, vil jeg meget gerne vise dig hvordan Viahs backend er bygget og høre dine tanker.</p></div>
       </div>
     </div>
   </section>
@@ -195,14 +273,14 @@
     <div class="inner split">
       <div>
         <div class="eyebrow"><span class="pip"></span> Hvad Watershed er</div>
-        <h2>AI-projekter fejler på <span class="accent">samme måde</span>.</h2>
-        <p class="lede">AI'en genererer imponerende løsninger tidligt, konteksten fragmenteres på tværs af sessioner, planlægningen slutter aldrig eller byggeriet starter for tidligt - og projektet kollapser til en <b>dead-pool</b>: ligner fremdrift, men fører ingen steder hen.</p>
-        <p class="note">Watershed giver mennesket og AI'en én fælles struktur. AI'ens opgave er ikke at generere løsninger. Den er at <b>stille de rigtige spørgsmål, i den rigtige rækkefølge, med nok kontekst til at svarene betyder noget.</b></p>
+        <h2>Når man bygger med AI, knækker <span class="accent">hukommelsen</span> først.</h2>
+        <p class="lede">Konteksten fragmenteres mellem sessioner, løsninger kommer før problemet er forstået, og projektet kollapser til en <b>dead-pool</b> - ligner fremdrift, men fører ingen steder hen.</p>
+        <p class="note">Watershed giver projektet en vedvarende hukommelse, men <b>tvinger også dig til at tænke og reflektere</b> undervejs - samtidig med at AI'en kan sparre med dig i stedet for bare at generere løsninger.</p>
       </div>
       <div class="cards">
-        <div class="card"><h3>Struktur før løsninger</h3><p>Ingen løsning før problemet, begrænsningerne og systemtypen er forstået.</p></div>
-        <div class="card"><h3>Vedvarende kontekst</h3><p>Én levende fil er projektets hukommelse. Hver session starter med at læse den.</p></div>
-        <div class="card"><h3>Virkeligheden kommer tidligt</h3><p>En prototype tvinger kontakt med den virkelige verden, før systemet bliver overkonstrueret.</p></div>
+        <div class="card"><h3>Hukommelse der holder</h3><p>Én levende fil er projektets hukommelse. Hver session starter med at læse den, så intet går tabt mellem gangene.</p></div>
+        <div class="card"><h3>Tvinger dig til at tænke</h3><p>Den stiller spørgsmål i den rigtige rækkefølge og får dig til at reflektere, før der bygges.</p></div>
+        <div class="card"><h3>En sparringspartner</h3><p>AI'ens rolle er ikke at generere løsninger, men at tænke med - og udfordre dig undervejs.</p></div>
       </div>
     </div>
   </section>
@@ -232,23 +310,23 @@
   <!-- 5 HVORDAN JEG BYGGER (PLADSHOLDER) -->
   <section class="slide">
     <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Hvordan jeg bygger det</div>
-      <h2>Operatorer som <span class="accent">orkestratorer</span>, på tværs af værktøjer.</h2>
+      <div class="eyebrow"><span class="pip"></span> Hvordan jeg bygger det i praksis</div>
+      <h2>En måde at tænke på, <span class="accent">ikke et produkt</span>.</h2>
       <div class="cards c3">
         <div class="card"><div class="n">I Claude Code</div><h3>Indbyggede kommandoer</h3><p>Hver operator er en projekt-scoped slash-kommando. Rammen ligger i én kerne-fil, som AI'en læser før hvert trin.</p></div>
-        <div class="card"><div class="n">I Lovable</div><h3>Med Michael Hasse</h3><p>Kører den samme operator-tænkning inde i Lovable, sammen med de andre orkestratorer jeg bruger der.</p></div>
-        <div class="card"><div class="n">Pointen</div><h3>Værktøjs-uafhængigt</h3><p>Det er ikke et produkt man installerer - det er en måde at tænke på, som AI'en tager med ind i det miljø jeg bygger i.</p></div>
+        <div class="card"><div class="n">Med Michael Hasse</div><h3>Kortlægger landskabet</h3><p>Michael hjælper mig med at forstå hvilke andre orchestrators der findes - fra A til Z i et projekt - så Watershed dækker det rigtige.</p></div>
+        <div class="card"><div class="n">Pointen</div><h3>Værktøjs-uafhængigt</h3><p>Det er ikke noget man installerer - det er en måde at tænke på, som AI'en tager med ind i det miljø jeg bygger i.</p></div>
       </div>
-      <span class="editable">✎ Pladsholder - Jacob, justér denne slides ordlyd til præcis hvordan du formulerer Michael / Lovable</span>
+      <span class="editable">✎ Pladsholder - Jacob, justér ordlyden om Michael / orchestrators til præcis hvordan du formulerer det</span>
     </div>
   </section>
 
   <!-- 6 ARCHETYPE -->
   <section class="slide scroll">
     <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Zoom ind · archetype-operatoren</div>
-      <h2>Dér hvor <span class="accent">data-beslutningerne</span> træffes.</h2>
-      <p class="lede">Archetype definerer hvilken slags system det er, og hvad det er bygget af. Det er de data-temaer den undersøger i dag - den del jeg helst vil have dig til at skærpe:</p>
+      <div class="eyebrow"><span class="pip"></span> Zoom ind · sådan gør archetype i dag</div>
+      <h2>Sådan træffer <span class="accent">archetype</span> data-beslutninger i dag.</h2>
+      <p class="lede">Efter strategy kører archetype som en samtale, der definerer hvilken slags system det er - og især data og persistens. Ét spørgsmål ad gangen, konklusionerne skrives tilbage til init-project.md. Lige nu spørger den ind til:</p>
       <div class="cards c2">
         <div class="card"><h3>Form før "hvilken database"</h3><p>Kerne-entiteter og hvordan de hænger sammen. Relationel, dokument, vektor, geospatial, tidsserie - og hvorfor netop denne til disse data.</p></div>
         <div class="card"><h3>OLTP vs OLAP vs begge</h3><p>Transaktionelt, analytisk, eller begge dele så tidligt - og hvis begge, navngiv det som et signal om at systemet måske skal have to datalagre senere.</p></div>
@@ -263,40 +341,102 @@
   <!-- 7 SPØRGSMÅLET (Watershed) -->
   <section class="slide scroll">
     <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Det jeg beder om</div>
+      <div class="eyebrow"><span class="pip"></span> Sparringen</div>
       <h2>Hjælp mig med at få archetype til at <span class="accent">spørge bedre</span>.</h2>
       <div class="bigq">
         <div class="qlabel">Kernespørgsmålet</div>
-        <div class="qtext">Hvis du kunne tvinge ethvert projekt til at svare på bare 3-4 spørgsmål, før det vælger database eller datamodel - hvilke ville det så være?</div>
+        <div class="qtext">Hvis du kun måtte stille 4 spørgsmål, før du valgte database, datamodel og arkitektur til et nyt projekt - hvilke spørgsmål ville du stille?</div>
       </div>
       <ul class="qlist">
-        <li class="star"><span class="s">★</span><div>Hvor ser du oftest projekter træffe den <b>forkerte databeslutning helt fra start</b>?</div></li>
-        <li class="star"><span class="s">★</span><div>Hvornår er <b>"bare Postgres" det rigtige valg</b> - og hvornår bliver det en fejl at insistere på det?</div></li>
-        <li><span class="s">·</span><div>Hvordan afgør du <b>OLTP vs OLAP vs begge dele</b> tidligt, før der er skrevet kode?</div></li>
-        <li><span class="s">·</span><div><b>Vektorer / embeddings vs strukturerede tags</b> til matching og relevans - hvordan vælger du?</div></li>
-        <li><span class="s">·</span><div>Hvilke tidlige beslutninger er <b>billige at ændre</b>, og hvilke <b>akkumulerer og gør ondt</b>? Hvor bør et lille team lægge sin energi?</div></li>
-        <li><span class="s">·</span><div>Hvordan vægter du en <b>managed platform</b> (Supabase, Fabric, Cosmos) kontra selv at sætte delene sammen?</div></li>
+        <li class="star"><span class="s">★</span><div>Hvis du skulle <b>lære en AI at tænke som en erfaren arkitekt</b>, hvilke spørgsmål ville du lære den at stille først?</div></li>
+        <li class="star"><span class="s">★</span><div>Når du starter et nyt produkt, hvilke <b>beslutninger er vigtigst at få rigtige tidligt</b>?</div></li>
+        <li><span class="s">·</span><div>Hvilke spørgsmål stiller du <b>dig selv</b> for at vælge arkitektur, database og teknologi?</div></li>
+        <li><span class="s">·</span><div>Hvilke <b>fejl ser du teams begå igen og igen</b>, når de designer systemer?</div></li>
       </ul>
+      <p class="note">Dine svar her ryger direkte ind i <b>archetype</b>-operatoren - som de spørgsmål den lærer at stille.</p>
     </div>
   </section>
 
-  <!-- 8 VIAH INTRO -->
-  <section class="slide" data-part="2">
-    <svg class="flow" style="bottom:12%" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0,60 Q300,110 600,60 T1200,60"/><path d="M0,80 Q300,130 600,80 T1200,80"/></svg>
-    <div class="inner split">
+  <!-- 8 VIAH INTRO + front-end animation -->
+  <section class="slide scroll" data-part="2" data-flow="1">
+    <div class="inner split phone-split">
       <div>
         <div class="eyebrow"><span class="pip"></span> Anden del · Viah</div>
-        <h2>Ét AI-gennemløb pr. sted.<br>Hver søgning er <span class="accent">deterministisk SQL</span>.</h2>
-        <p class="lede">Viah bygger en gå-venlig, dag-for-dag rejseplan af rigtige steder. Det arkitektoniske væddemål: <b>Claude tagger hvert steds stemning én gang</b> (med en confidence-score), og derefter er <b>hver forespørgsel en almindelig SQL-scoringsfunktion</b> - tag-match + nærhed + rating. AI'en sidder aldrig på forespørgselsstien.</p>
-        <div class="stat">
+        <h2>Først front-end:<br>sådan <span class="accent">opleves</span> Viah.</h2>
+        <p class="lede">Drop et anker, vælg kategorier og stemninger - og få en gå-venlig dag på et kort. Bagved er hver søgning en deterministisk SQL-funktion, ikke et live AI-kald.</p>
+        <ul class="flow-steps" id="vFlowSteps">
+          <li data-s="0"><span class="fn">1</span> Drop dit anker</li>
+          <li data-s="1"><span class="fn">2</span> Vælg kategorier</li>
+          <li data-s="2"><span class="fn">3</span> Vælg stemninger</li>
+          <li data-s="3"><span class="fn">4</span> Din dag på kortet</li>
+        </ul>
+        <div class="stat" style="margin-top:22px">
           <div class="s"><b>1</b><span>by live (København)</span></div>
           <div class="s"><b>890</b><span>steder</span></div>
           <div class="s"><b>0</b><span>AI-kald pr. søgning</span></div>
         </div>
       </div>
-      <div class="cards">
-        <div class="card"><h3>Hvorfor denne form</h3><p>Hurtigt, gentageligt og billigt: samme input giver altid samme rejseplan, og model-omkostningen betales én gang ved ingest, ikke pr. bruger.</p></div>
-        <div class="card"><h3>Hvad jeg vil have fra dig</h3><p>Hvor dette design bliver presset når det skaleres til mange byer, og om du ville bygge matchingen anderledes.</p></div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen-area">
+            <div class="screen on" id="vp-anchor">
+              <div class="scr-h">Hvor starter<br>din dag?</div>
+              <div class="field"><span class="mp">◉</span> Nørreport St.</div>
+              <div class="mini-map"><div class="grid"></div><div class="anchor-pin"><div class="pin-shape"></div></div></div>
+            </div>
+            <div class="screen" id="vp-cat">
+              <div class="scr-h">Hvad er du<br>i humør til?</div>
+              <div class="cat-grid">
+                <div class="cat s1"><div class="ci">☕</div><div class="cn">Caféer</div><span class="chk">✓</span></div>
+                <div class="cat"><div class="ci">🍽</div><div class="cn">Restauranter</div></div>
+                <div class="cat s2"><div class="ci">🍸</div><div class="cn">Barer</div><span class="chk">✓</span></div>
+                <div class="cat s3"><div class="ci">🏛</div><div class="cn">Museer</div><span class="chk">✓</span></div>
+                <div class="cat"><div class="ci">🌿</div><div class="cn">Natur</div></div>
+                <div class="cat"><div class="ci">📷</div><div class="cn">Aktiviteter</div></div>
+              </div>
+            </div>
+            <div class="screen" id="vp-tags">
+              <div class="scr-eye">Caféer · 1 af 3</div>
+              <div class="scr-h">Hvordan tager du<br>din kaffe?</div>
+              <div class="chips">
+                <span class="chip t1">Specialkaffe</span>
+                <span class="chip t2">Brunch</span>
+                <span class="chip">Bageri</span>
+                <span class="chip">Tagterrasse</span>
+                <span class="chip">Havnefront</span>
+                <span class="chip">Vegansk</span>
+              </div>
+            </div>
+            <div class="screen scr-gen" id="vp-gen">
+              <div class="gen-track"><svg viewBox="0 0 170 90"><path d="M8,70 C 50,10 120,90 162,24"/></svg><div class="gen-pin"></div></div>
+              <div class="gen-lines">
+                <div class="gl1">Går gennem gaderne</div>
+                <div class="gl2">Smager 12 kanelsnegle</div>
+                <div class="gl3">Sekvenserer din dag</div>
+              </div>
+            </div>
+            <div class="screen" id="vp-map">
+              <div class="scr-eye" style="margin-bottom:8px">København · 3 stop · tir</div>
+              <div class="map-area">
+                <svg class="mapsvg" viewBox="0 0 220 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                  <path d="M150,240 L220,240 L220,150 C196,176 176,214 150,240 Z" fill="rgba(91,141,239,.20)"/>
+                  <ellipse cx="44" cy="96" rx="24" ry="17" fill="rgba(120,175,120,.18)"/>
+                  <g fill="rgba(255,255,255,.5)"><rect x="92" y="44" width="34" height="26" rx="5"/><rect x="150" y="104" width="30" height="24" rx="5"/><rect x="58" y="150" width="28" height="22" rx="5"/></g>
+                  <path class="rline" d="M50,180 L120,120 L180,60"/>
+                  <g class="mp p1"><circle cx="50" cy="180" r="12" fill="#5B8DEF"/><text x="50" y="184">1</text></g>
+                  <g class="mp p2"><circle cx="120" cy="120" r="12" fill="#FF7E47"/><text x="120" y="124">2</text></g>
+                  <g class="mp p3"><circle cx="180" cy="60" r="12" fill="#5B8DEF"/><text x="180" y="64">3</text></g>
+                </svg>
+              </div>
+              <div class="stops">
+                <div class="stop r1"><span class="sn b">1</span><div class="si"><div class="t">Kismet</div><div class="m">9:00 · Café</div></div><span class="tag">Specialkaffe</span></div>
+                <div class="stop r2"><span class="sn o">2</span><div class="si"><div class="t">Designmuseum</div><div class="m">12:30 · Museum</div></div><span class="tag">Design</span></div>
+                <div class="stop r3"><span class="sn b">3</span><div class="si"><div class="t">Ruby</div><div class="m">19:00 · Bar</div></div><span class="tag">Cocktails</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -356,50 +496,103 @@
     </div>
   </section>
 
-  <!-- 10 VIAH PIPELINE -->
+  <!-- 10 VIAH ARKITEKTUR-DIAGRAM -->
   <section class="slide scroll" data-part="2">
     <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Viah · hvad trækker hvorfra</div>
-      <h2>Berigelse er <span class="accent">batch</span>. Søgning er <span class="accent">øjeblikkelig</span>.</h2>
-      <div class="pipe">
-        <div class="lane">
-          <div class="lk">Ingest</div>
-          <div class="steps">
-            <span class="step"><b>Google Places (New)</b><small>navn, geo, åbningstider, rating</small></span><span class="arr">→</span>
-            <span class="step"><b>places_staging</b><small>rå jsonb</small></span><span class="arr">→</span>
-            <span class="step"><b>process_staging</b><small>map &amp; promovér</small></span><span class="arr">→</span>
-            <span class="step"><b>places</b><small>rene rækker</small></span>
-            <span class="freq once">lejlighedsvis</span>
-          </div>
-        </div>
-        <div class="lane">
-          <div class="lk">Berig · AI</div>
-          <div class="steps">
-            <span class="step ai"><b>Claude</b><small>tagger stemning + confidence</small></span><span class="arr">→</span>
-            <span class="step ai"><b>validate_and_insert_place_tags</b><small>tjekket mod tag-liste</small></span><span class="arr">→</span>
-            <span class="step"><b>place_tags</b><small>source = ai</small></span>
-            <span class="freq once">én gang pr. sted</span>
-          </div>
-        </div>
-        <div class="lane">
-          <div class="lk">Berig · Geo</div>
-          <div class="steps">
-            <span class="step geo"><b>OpenStreetMap</b><small>polygoner</small></span><span class="arr">→</span>
-            <span class="step geo"><b>geo_features</b><small>PostGIS · GiST</small></span><span class="arr">→</span>
-            <span class="step geo"><b>derive_geo_tags</b><small>ST_DWithin</small></span><span class="arr">→</span>
-            <span class="step"><b>place_tags</b><small>source = geo_derived</small></span>
-            <span class="freq once">lejlighedsvis</span>
-          </div>
-        </div>
-        <div class="lane">
-          <div class="lk">Forespørgsel</div>
-          <div class="steps">
-            <span class="step"><b>iOS-app</b><small>strukturerede valg</small></span><span class="arr">→</span>
-            <span class="step ai" style="background:var(--accent-deep);color:#fff;border-color:transparent"><b>search_places()</b><small style="color:rgba(255,255,255,.7)">deterministisk SQL</small></span><span class="arr">→</span>
-            <span class="step"><b>rangeret rejseplan</b><small>intet model-kald</small></span>
-            <span class="freq live">hver søgning</span>
-          </div>
-        </div>
+      <div class="eyebrow"><span class="pip"></span> Viah · sådan hænger det sammen</div>
+      <h2>Fra kilde til <span class="accent">rejseplan</span>.</h2>
+      <div class="diagram">
+        <svg viewBox="0 0 1000 450" role="img" aria-label="Viah dataflow">
+          <defs>
+            <marker id="mg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9aa3b0"/></marker>
+            <marker id="ma" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#E08A2B"/></marker>
+            <marker id="mb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2F6FED"/></marker>
+          </defs>
+          <!-- zone labels -->
+          <text x="103" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#6B7480">KILDER</text>
+          <text x="870" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="600" letter-spacing="1.5" fill="#6B7480">APP</text>
+
+          <!-- DB panel -->
+          <rect x="300" y="20" width="404" height="412" rx="16" fill="#F1F7FE" stroke="#2F6FED" stroke-width="1.4"/>
+          <text x="316" y="44" font-family="Inter,sans-serif" font-size="12.5" font-weight="600" fill="#1E4FBF">Supabase · Postgres + PostGIS</text>
+
+          <!-- sources -->
+          <g font-family="Inter,sans-serif">
+            <rect x="24" y="58" width="158" height="54" rx="11" fill="#fff" stroke="#E4E8EE"/>
+            <text x="103" y="82" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">Google Places</text>
+            <text x="103" y="99" text-anchor="middle" font-size="10.5" fill="#6B7480">navn · geo · rating</text>
+            <rect x="24" y="200" width="158" height="54" rx="11" fill="#fff" stroke="#E4E8EE"/>
+            <text x="103" y="224" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">OpenStreetMap</text>
+            <text x="103" y="241" text-anchor="middle" font-size="10.5" fill="#6B7480">polygoner</text>
+            <rect x="24" y="343" width="158" height="54" rx="11" fill="#fff" stroke="#E4E8EE"/>
+            <text x="103" y="367" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">Claude</text>
+            <text x="103" y="384" text-anchor="middle" font-size="10.5" fill="#6B7480">tagger stemning</text>
+          </g>
+
+          <!-- db tables -->
+          <g font-family="Inter,sans-serif">
+            <rect x="326" y="70" width="176" height="46" rx="9" fill="#fff" stroke="#E4E8EE"/>
+            <text x="414" y="90" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">places_staging</text>
+            <text x="414" y="105" text-anchor="middle" font-size="10" fill="#6B7480">rå jsonb</text>
+
+            <rect x="326" y="150" width="352" height="62" rx="11" fill="#E5EDFD" stroke="#2F6FED"/>
+            <text x="502" y="178" text-anchor="middle" font-size="15" font-weight="700" fill="#13171E">places</text>
+            <text x="502" y="196" text-anchor="middle" font-size="10.5" fill="#3C4452">kerne · 890 rækker</text>
+
+            <rect x="326" y="256" width="164" height="54" rx="9" fill="#fff" stroke="#E4E8EE"/>
+            <text x="408" y="279" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">place_tags</text>
+            <text x="408" y="294" text-anchor="middle" font-size="10" fill="#6B7480">confidence · source</text>
+
+            <rect x="520" y="256" width="158" height="54" rx="9" fill="#fff" stroke="#E4E8EE"/>
+            <text x="599" y="279" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">tags</text>
+            <text x="599" y="294" text-anchor="middle" font-size="10" fill="#6B7480">32 · 8 kategorier</text>
+
+            <rect x="326" y="350" width="164" height="54" rx="9" fill="#fff" stroke="#E4E8EE"/>
+            <text x="408" y="373" text-anchor="middle" font-size="12.5" font-weight="600" fill="#13171E">geo_features</text>
+            <text x="408" y="388" text-anchor="middle" font-size="10" fill="#6B7480">PostGIS · GiST</text>
+          </g>
+
+          <!-- query / app -->
+          <g font-family="Inter,sans-serif">
+            <rect x="764" y="150" width="212" height="62" rx="11" fill="#1E4FBF"/>
+            <text x="870" y="178" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">search_places()</text>
+            <text x="870" y="196" text-anchor="middle" font-size="10.5" fill="#CFE0FF">deterministisk SQL</text>
+            <rect x="800" y="268" width="140" height="50" rx="11" fill="#fff" stroke="#E4E8EE"/>
+            <text x="870" y="290" text-anchor="middle" font-size="13" font-weight="600" fill="#13171E">iOS-app</text>
+            <text x="870" y="305" text-anchor="middle" font-size="10" fill="#6B7480">rangeret rejseplan</text>
+          </g>
+
+          <!-- arrows -->
+          <g fill="none" stroke="#9aa3b0" stroke-width="1.6">
+            <path d="M182,85 C250,85 270,92 322,92" marker-end="url(#mg)"/>
+            <path d="M414,116 L414,146" marker-end="url(#mg)"/>
+            <path d="M182,370 C250,370 262,283 322,283" marker-end="url(#mg)"/>
+            <path d="M182,227 C250,227 252,377 322,377" marker-end="url(#mg)"/>
+            <path d="M408,350 L408,314" marker-end="url(#mg)"/>
+          </g>
+          <!-- relationships (no head) -->
+          <g fill="none" stroke="#B7C0CC" stroke-width="1.3" stroke-dasharray="3 4">
+            <path d="M408,256 L468,212"/>
+            <path d="M599,256 L540,212"/>
+          </g>
+          <!-- query arrows -->
+          <path d="M678,181 L760,181" fill="none" stroke="#E08A2B" stroke-width="2.2" marker-end="url(#ma)"/>
+          <path d="M870,212 L870,264" fill="none" stroke="#2F6FED" stroke-width="2" marker-end="url(#mb)"/>
+
+          <!-- small labels -->
+          <g font-family="Inter,sans-serif" font-size="10" fill="#6B7480">
+            <text x="252" y="80">indlæs</text>
+            <text x="420" y="138">promovér</text>
+            <text x="236" y="330">tag + confidence</text>
+            <text x="414" y="336">derive_geo_tags</text>
+            <text x="520" y="238" text-anchor="middle">M:N</text>
+          </g>
+          <text x="700" y="170" font-family="Inter,sans-serif" font-size="10.5" font-weight="600" fill="#E08A2B">hver søgning</text>
+        </svg>
+      </div>
+      <div class="dlegend">
+        <span><i></i> Berigelse - lejlighedsvis / én gang pr. sted (AI og geo)</span>
+        <span><i class="live"></i> Forespørgsel - hver søgning, ren SQL</span>
       </div>
     </div>
   </section>
@@ -478,6 +671,15 @@
   const N=slides.length, dots=document.getElementById('dots');
   slides.forEach((_,i)=>{const b=document.createElement('button');b.onclick=()=>go(i);dots.appendChild(b);});
   let cur=0;
+
+  // Viah front-end phone flow
+  const FLOW=[{id:'vp-anchor',dur:2100,step:0},{id:'vp-cat',dur:2400,step:1},{id:'vp-tags',dur:2200,step:2},{id:'vp-gen',dur:2400,step:2},{id:'vp-map',dur:3600,step:3}];
+  let fOn=false,fIdx=0,fTimer=null;
+  function paint(i){FLOW.forEach((f,j)=>{const el=document.getElementById(f.id);if(el)el.classList.toggle('on',j===i);});document.querySelectorAll('#vFlowSteps li').forEach(li=>li.classList.toggle('active',+li.dataset.s===FLOW[i].step));}
+  function tick(){if(!fOn)return;paint(fIdx);fTimer=setTimeout(()=>{fIdx=(fIdx+1)%FLOW.length;tick();},FLOW[fIdx].dur);}
+  function startFlow(){if(fOn)return;fOn=true;fIdx=0;tick();}
+  function stopFlow(){fOn=false;clearTimeout(fTimer);}
+
   function go(n){
     if(n<0||n>=N)return;
     slides[cur].classList.remove('active');
@@ -488,6 +690,7 @@
     document.getElementById('prev').disabled=cur===0;
     document.getElementById('next').disabled=cur===N-1;
     document.body.classList.toggle('part2', s.dataset.part==='2');
+    if(s.dataset.flow)startFlow();else stopFlow();
   }
   document.addEventListener('keydown',e=>{
     if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' ')go(cur+1);
