@@ -309,7 +309,7 @@
       <div class="wflow">
         <div class="wf start"><span class="dot"></span><b>IDÉ</b><span>Det rå udgangspunkt.</span></div>
         <div class="wf"><span class="dot"></span><b>STRATEGY</b><span>Hvem er det til?</span></div>
-        <div class="wf hot"><span class="dot"></span><b>ARCHETYPE</b><span>Hvad bygger vi?</span><em>Systemtype · database · datamodel · search-strategi · infrastruktur</em></div>
+        <div class="wf hot"><span class="dot"></span><b>ARCHETYPE</b><span>Hvad er det egentlig for et system, vi bygger?</span><em>Marketplace · search · agent · data-produkt ... og <b style="color:var(--accent-deep)">derefter</b> database, vektor, Postgres, Fabric</em></div>
         <div class="wf"><span class="dot"></span><b>CONSTRAINTS</b><span>Hvad kan gå i stykker?</span></div>
         <div class="wf"><span class="dot"></span><b>EVALUATION</b><span>Hvad betyder succes?</span></div>
         <div class="wf"><span class="dot"></span><b>PROTOTYPE</b><span>Hvad er den mindste rigtige test?</span></div>
@@ -337,9 +337,13 @@
   <!-- 6 ARCHETYPE -->
   <section class="slide scroll">
     <div class="inner">
-      <div class="eyebrow"><span class="pip"></span> Zoom ind · sådan gør archetype i dag</div>
-      <h2>Sådan træffer <span class="accent">archetype</span> data-beslutninger i dag.</h2>
-      <p class="lede">Archetype er trinnet hvor <b>systemtype, database, datamodel, search-strategi og infrastruktur</b> bliver valgt. Den kører som en samtale - ét spørgsmål ad gangen - og skriver konklusionerne tilbage til init-project.md. Lige nu spørger den ind til:</p>
+      <div class="eyebrow"><span class="pip"></span> Zoom ind · archetype</div>
+      <h2>Først arketypen, så <span class="accent">teknologien</span>.</h2>
+      <p class="lede">Archetype handler først om én ting: <b>hvad er det egentlig for et system, vi bygger?</b> Ikke "hvilken database" endnu - men hvilken slags produkt.</p>
+      <div class="pill-row" style="margin-top:16px">
+        <span class="pill">Marketplace</span><span class="pill">Recommendation engine</span><span class="pill">Search system</span><span class="pill">Workflow engine</span><span class="pill">SaaS-platform</span><span class="pill">Analytics-platform</span><span class="pill">Agent-system</span><span class="pill">Content-platform</span><span class="pill">Data-produkt</span>
+      </div>
+      <p class="lede" style="margin-top:22px">Først når arketypen er klar, følger <b>database, datamodel, search-strategi og infrastruktur</b> - inden for samme trin. Det er dér den spørger ind til:</p>
       <div class="cards c2">
         <div class="card"><h3>Form før "hvilken database"</h3><p>Kerne-entiteter og hvordan de hænger sammen. Relationel, dokument, vektor, geospatial, tidsserie - og hvorfor netop denne til disse data.</p></div>
         <div class="card"><h3>OLTP vs OLAP vs begge</h3><p>Transaktionelt, analytisk, eller begge dele så tidligt - og hvis begge, navngiv det som et signal om at systemet måske skal have to datalagre senere.</p></div>
