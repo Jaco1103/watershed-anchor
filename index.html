@@ -255,9 +255,9 @@
   .lc-gate.plain{color:var(--muted);font-weight:500}
   .lc-gate .ar{font-size:15px;color:var(--faint)}
   /* mermaid (slide 10) */
-  .mermaid-wrap{margin:14px auto 0;max-width:980px;text-align:center}
+  .mermaid-wrap{margin:12px auto 0;width:100%;text-align:center}
   .mermaid{font-family:var(--sans)}
-  .mermaid svg{max-width:100%;max-height:58vh;height:auto}
+  .mermaid svg{max-width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -536,24 +536,21 @@
         <pre class="mermaid">
 flowchart TD
   A["Google Places API"] --&gt;|"grid + søgeord"| B{"Kvalitetsport"}
-  B --&gt;|"for få anmeldelser / blokeret type"| X["Skip"]
-  B --&gt;|"kæde"| X2["Auto-arkivér"]
+  B --&gt;|"lav kvalitet / kæde"| X["skip / arkivér"]
   B --&gt;|"godkendt"| C["places_staging · rå data"]
-  C --&gt;|"process_staging · map_raw_category"| D["places · pending · kategori sat"]
-  D --&gt;|"enrich.ts"| E["Claude Sonnet · foreslår tags"]
-  E --&gt; F{"validate_and_insert_place_tags"}
-  F --&gt;|"slug ikke tilladt for kategori"| Y["Afvist"]
-  F --&gt;|"confidence under 0,70"| Y
+  C --&gt;|"map_raw_category"| D["places · pending · kategori sat"]
+  D --&gt;|"enrich.ts · Claude Sonnet"| F{"tag-validering"}
+  F --&gt;|"ikke tilladt / lav confidence"| Y["afvist"]
   F --&gt;|"godkendt"| G["place_tags · stemninger"]
   G --&gt; H{"mindst 1 gyldigt tag?"}
   H --&gt;|"nej"| P["forbliver pending"]
   H --&gt;|"ja"| I["places · active"]
-  I --&gt; J["Geo: OSM + PostGIS · geo_derived tags"]
-  J --&gt; K["Klar til search_places()"]
+  I --&gt; J["Geo-tags · OSM + PostGIS"]
+  J --&gt; K["Klar til søgning"]
   classDef hot fill:#1E4FBF,stroke:#1E4FBF,color:#ffffff;
   classDef skip fill:#F3F4F6,stroke:#D9DEE6,color:#8B95A8;
   class I,K hot
-  class X,X2,Y,P skip
+  class X,Y,P skip
         </pre>
       </div>
       <p class="wf-foot">Porten <b>validate_and_insert_place_tags</b> tjekker hvert tag mod <b>category_tag_options</b> (er det tilladt for stedets kategori?) og confidence ≥ 0,70. Søgning bagefter er ren, deterministisk SQL.</p>
@@ -618,7 +615,7 @@ flowchart TD
 </div>
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <script>
-  if(window.mermaid){mermaid.initialize({startOnLoad:false,theme:'base',themeVariables:{fontFamily:'Inter, sans-serif',primaryColor:'#EEF4FE',primaryBorderColor:'#2F6FED',primaryTextColor:'#13171E',lineColor:'#9aa3b0',secondaryColor:'#F4F9FE',tertiaryColor:'#ffffff'},flowchart:{useMaxWidth:true,htmlLabels:true,curve:'basis'}});}
+  if(window.mermaid){mermaid.initialize({startOnLoad:false,theme:'base',themeVariables:{fontFamily:'Inter, sans-serif',fontSize:'16px',primaryColor:'#EEF4FE',primaryBorderColor:'#2F6FED',primaryTextColor:'#13171E',lineColor:'#9aa3b0',secondaryColor:'#F4F9FE',tertiaryColor:'#ffffff'},flowchart:{useMaxWidth:false,htmlLabels:true,curve:'basis'}});}
   const slides=[...document.querySelectorAll('.slide')];
   const N=slides.length, dots=document.getElementById('dots');
   slides.forEach((_,i)=>{const b=document.createElement('button');b.onclick=()=>go(i);dots.appendChild(b);});
